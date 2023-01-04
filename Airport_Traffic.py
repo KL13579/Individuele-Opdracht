@@ -159,7 +159,7 @@ land_opties = ['Belgium', 'Germany', 'Estonia', 'Finland', 'United Kingdom',
 
 
 sns.set_style('whitegrid')
-p = sns.lineplot(data=Total_ATM, x='YEAR', y='Total')
+p = sns.lineplot(data=Totaal_ATM, x='YEAR', y='Total')
 plt.title("Totaal ATM's per Jaar (Wereldwijd)")
 plt.show()
 
