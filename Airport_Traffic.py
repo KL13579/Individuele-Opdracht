@@ -42,14 +42,14 @@ st.set_page_config(page_title = "Airport Traffic",
 # In[7]:
 
 
-df = pd.read_csv('Airport_data.csv')
-df.drop(columns='Unnamed: 0')
+#df = pd.read_csv('Airport_data.csv')
+#df.drop(columns='Unnamed: 0')
 
 
 # In[8]:
 
 
-df['STATE_NAME'].unique()
+#df['STATE_NAME'].unique()
 
 
 # ##### Totaal ATM's per jaar Wereldwijd
