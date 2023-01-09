@@ -221,7 +221,7 @@ Totaal_per_continent = pd.read_csv('Tot_per_continent.csv')
 
 
 #Hier worden de landen vertaald naar het Nederlands
-Totaal_ATM = Totaal_ATM.rename(columns = {'Belgium':'België', 'Germany':'Duitsland', 'Estonia':'Estland', 
+Totaal_per_land = Totaal_per_land.rename(columns = {'Belgium':'België', 'Germany':'Duitsland', 'Estonia':'Estland', 
                                           'Finland':'Finland', 'United Kingdom':'Verenigd Koninkrijk', 
                                           'Netherlands':'Nederland', 'Ireland':'Ierland', 'Denmark':'Denemarken', 
                                           'Luxembourg':'Luxemburg', 'Norway':'Noorwegen', 'Poland':'Polen', 
