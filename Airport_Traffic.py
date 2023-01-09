@@ -376,7 +376,7 @@ with tab2:
 
 #Code voor de lineplots
     else:
-        lineplot = px.line(Totaal_per_land, x = Totaal_per_land.index, y = land_variabele, 
+        lineplot = px.line(Totaal_per_land, x = "YEAR", y = land_variabele, 
                       title = "Totaal ATM's per Land per Jaar '" + land_variabele + "'")
         lineplot.update_xaxes(title = "Tijd (Jaren)")
         lineplot.update_yaxes(title = "Aantal ATM's")
