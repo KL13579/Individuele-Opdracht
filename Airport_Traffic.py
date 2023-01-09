@@ -376,9 +376,9 @@ with tab2:
 
 #Code voor de lineplots
     else:
-        lineplot = px.line(Tot_per_land, x = Tot_per_land.index, y = land_variabele, 
+        lineplot = px.line(Totaal_per_land, x = Totaal_per_land.index, y = land_variabele, 
                       title = "Totaal ATM's per Land per Jaar '" + land_variabele + "'",
-                     labels = {Tot_per_land.index : "Tijd (Jaren)",
+                     labels = {Totaal_per_land.index : "Tijd (Jaren)",
                               land_variabele : "Aantal ATM's in '" + land_variabele + "'"})
         st.plotly_chart(lineplot)
 
