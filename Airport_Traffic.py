@@ -92,7 +92,7 @@ st.set_page_config(page_title = "Airport Traffic",
 #Hier maak ik het Dataframe in het goede format
 #df_eurocontrol.columns = df_eurocontrol.iloc[2]
 #df_eurocontrol2 = df_eurocontrol.drop(labels = [0, 1, 2, 3, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 
-                                                151, 152, 153, 154, 155, 156, 157, 158], axis = 0)
+#                                                151, 152, 153, 154, 155, 156, 157, 158], axis = 0)
 
 
 # In[74]:
