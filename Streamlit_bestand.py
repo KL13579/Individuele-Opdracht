@@ -140,9 +140,9 @@ hoofdtab, tab1, tab2, tab3, tab4 = st.tabs(["Hoofdpagina", "Algemeen Overzicht",
 with hoofdtab:
     st.header("Aantal ATM's van afgelopen jaren en in de toekomst (Wereldwijd)")
     st.write("In dit dashboard wordt er laten zien wat het aantal Air Traffic Movements (ATM's) wereldwijd is geweest in de afgelopen jaren. Daarnaast wordt er ook gekeken naar de toekomst en wordt er een voorspelling gedaan over het aantal ATM's. Alle data wordt laten zien aan de hand van onder andere een lijngrafiek, een kaart en een voorspellingsmodel.")
-    st.markdown("Bronnen:")
-    st.markdown("https://ansperformance.eu/reference/dataset/airport-traffic/")
-    st.markdown("https://www.eurocontrol.int/publication/eurocontrol-forecast-update-2021-2027")
+    st.markdown("Bronnen:" <br> "https://ansperformance.eu/reference/dataset/airport-traffic/" <br> "https://www.eurocontrol.int/publication/eurocontrol-forecast-update-2021-2027")
+#    st.markdown("https://ansperformance.eu/reference/dataset/airport-traffic/")
+#    st.markdown("https://www.eurocontrol.int/publication/eurocontrol-forecast-update-2021-2027")
 
 
 # In[22]:
