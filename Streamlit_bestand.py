@@ -308,7 +308,7 @@ with tab3:
     
     else:
 #Dropdown menu voor de variabele van de grafiek
-        land_variabele2 = st.selectbox("Kies hier een variabele voor de grafiek: ", land_opties)        
+        land_variabele2 = st.selectbox("Kies hier een tweede variabele voor de plot: ", land_opties)        
         
 #Code voor lineplot met 2 landen
         lineplot2 = px.line(Totaal_per_land, x = "YEAR", y = [land_variabele, land_variabele2], 
