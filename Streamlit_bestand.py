@@ -51,7 +51,7 @@ Voorspelling_worst = Voorspelling_worst.rename(columns = {"2":"YEAR"})
 Totaal_per_continent = Totaal_per_continent.drop(columns = "Unnamed: 0")
 
 
-# In[19]:
+# In[5]:
 
 
 #Hieronder maak ik de mogelijkheden voor de dropdown menu's
@@ -199,16 +199,23 @@ hoofdtab, tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Hoofdpagina", "Algemeen
                                       "Overzicht per Land", "Voorspelling aantal Bewegingen", "Conclusie", "Gedane Aannames"])
 
 
-# In[8]:
+# In[21]:
 
 
 #Code voor de Hoofdpagina
 with hoofdtab:
     st.header("Aantal ATM's van afgelopen jaren en in de toekomst (Focus Europa)")
-    st.write("In dit dashboard wordt er laten zien wat het aantal Air Traffic Movements (ATM's) wereldwijd is geweest in de afgelopen jaren. Deze data is van ANSperformance (Eurocontrol). Daarnaast wordt er ook gekeken naar de toekomst en wordt er een voorspelling gedaan over het aantal ATM's. De voorspelling over het aantal ATM's wordt besproken aan de hand van de voorspelling van het aantal vliegbewegingen. De bron voor deze data is Eurocontrol, zij hebben een voorspelling gedaan t/m 2028. In dit dashboard ligt de focus op de landen in Europa. Het dashboard is op de volgende manier opgebouwd: Tabblad 1 laat kort zien wat het totaal aantal ATM's wereldwijd was in de afgelopen jaren, Tabblad 2 laat zien wat het aantal ATM's per land was in de afgelopen jaren (d.m.v. het dropdown menu kunt u een land naar keuze invullen), Tabblad 3 laat zien wat het aantal ATM's per Continent en per Airport was in de afgelopen jaren, Tabblad 4 laat het aantal ATM's per land zien van de afgelopen jaren, Tabblad 5 laat zien wat de voorspellnig van het aantal vliegbewegingen is t/m 2028, Tabblad 6 bevat een kleine conclusie en Tabblad 7 bevat de gedane aannames tijdens het creëren van het dashboard.")
+    st.write("In dit dashboard wordt er laten zien wat het aantal Air Traffic Movements (ATM's) wereldwijd is geweest in de afgelopen jaren. Deze data is van ANSperformance (Eurocontrol). Daarnaast wordt er ook gekeken naar de toekomst en wordt er een voorspelling gedaan over het aantal ATM's. De voorspelling over het aantal ATM's wordt besproken aan de hand van de voorspelling van het aantal vliegbewegingen. De bron voor deze data is Eurocontrol, zij hebben een voorspelling gedaan t/m 2028. In dit dashboard ligt de focus op de landen in Europa. Het dashboard is op de volgende manier opgebouwd: ")
+    st.markdown("- Tabblad 1 laat kort het aantal ATM's zien over de afgelopen jaren wereldwijd")
+    st.markdown("- Tabblad 2 laat zien wat het aantal ATM's per airport was over de afgelopen jaren")
+    st.markdown("- Tabblad 3 laat zien wat het aantal ATM's per land was over de afgelopen jaren")
+    st.markdown("- Tabblad 4 geeft een inzicht in het aantal bewegingen in de toekomst per land, door middel van 3 scenario's")
+    st.markdown("- Tabblad 5 geeft een korte conclusie over de inzichten die dit dashboard heeft gecreërd en welke vervolg onderzoeken nog uitgevoerd kunnen worden")
+    st.markdown("- Tabblad 6 is een overzicht van de gedane aannames tijdens het creëren van dit dashboard")
+    st.markdown("##")
     st.markdown("Bronnen:")
-    st.markdown("https://ansperformance.eu/reference/dataset/airport-traffic/")
-    st.markdown("https://www.eurocontrol.int/publication/eurocontrol-forecast-update-2022-2028")
+    st.markdown("- https://ansperformance.eu/reference/dataset/airport-traffic/")
+    st.markdown("- https://www.eurocontrol.int/publication/eurocontrol-forecast-update-2022-2028")
 
 
 # In[9]:
@@ -228,19 +235,19 @@ with tab1:
     st.plotly_chart(algemeen)
 
 
-# In[31]:
+# In[10]:
 
 
 #Code voor het derde tabblad
 with tab2:
     st.header("Het aantal ATM's per Airport")
-    st.write("In dit tabblad wordt er laten zien wat het aantal ATM's per airport is over de afgelopen jaren. U kunt zelf een airport uitkiezen door middel van het dropdown menu.")
+    st.write("In dit tabblad wordt er laten zien wat het aantal ATM's per airport is over de afgelopen jaren. U kunt zelf een airport uitkiezen door middel van het dropdown menu. Ook kunt u twee airports met elkaar vergelijken door op de daarvoor bestemde checkbox te klikken. Vanuit daar kunt u de gewenste airport, waarmee u wilt vergelijken, kiezen uit het dropdown menu.")
 
 #Keuze voor overzicht continent of voor een individueel land
-    continent = st.checkbox("Klik hier als u het verloop in het aantal ATM's voor een specifieke airport wilt zien")
+    continent = st.checkbox("Klik hier als u het verloop in het aantal ATM's voor de continenten wilt zien")
 
 #Code voor de plot van decontinenten
-    if continent is False:
+    if continent is True:
         lineplot = px.line(Totaal_per_continent, x = "YEAR", y = Totaal_per_continent.columns, 
                    title = "Totaal ATM's per Continent per Jaar")
         lineplot.update_xaxes(title = "Tijd (Jaren)")
@@ -272,6 +279,7 @@ with tab2:
                               title = "Totaal ATM's per Jaar op '" + airport_variabele + "'")
             lineplot2.update_xaxes(title = "Tijd (Jaren)")
             lineplot2.update_yaxes(title = "Aantal ATM's")
+            lineplot2.update_layout(legend_title_text = "Airport")
             st.plotly_chart(lineplot2)
 
 
@@ -282,17 +290,33 @@ with tab2:
 with tab3:
     
     st.header("Het aantal ATM's per Land")
-    st.write("In dit tabblad wordt er laten zien wat het aantal ATM's per land is over de afgelopen jaren. U kunt zelf een land uitkiezen door middel van het dropdown menu.")
+    st.write("In dit tabblad wordt er laten zien wat het aantal ATM's per land is over de afgelopen jaren. U kunt zelf een land uitkiezen door middel van het dropdown menu. Ook kunt u ervoor kiezen om 2 landen met elkaar te vergelijken, daarvoor moet u de tweede checkbox aanvinken en het land waarmee u wilt vergelijken selecteren via het tweede dropdown menu.")
 
 #Dropdown menu voor de variabele van de grafiek
     land_variabele = st.selectbox("Kies hier een variabele voor de grafiek: ", land_opties)
     
+#Keuze voor het vergelijken van landen
+    vergelijken = st.checkbox("Klik hier als u 2 landen met elkaar wilt vergelijken")
+    
 #Code voor de lineplots
-    lineplot = px.line(Totaal_per_land, x = "YEAR", y = land_variabele, 
-                      title = "Totaal ATM's per Jaar in '" + land_variabele + "'")
-    lineplot.update_xaxes(title = "Tijd (Jaren)")
-    lineplot.update_yaxes(title = "Aantal ATM's")
-    st.plotly_chart(lineplot)
+    if vergelijken is False:
+        lineplot = px.line(Totaal_per_land, x = "YEAR", y = land_variabele, 
+                          title = "Totaal ATM's per Jaar in '" + land_variabele + "'")
+        lineplot.update_xaxes(title = "Tijd (Jaren)")
+        lineplot.update_yaxes(title = "Aantal ATM's")
+        st.plotly_chart(lineplot)
+    
+    else:
+#Dropdown menu voor de variabele van de grafiek
+        land_variabele2 = st.selectbox("Kies hier een variabele voor de grafiek: ", land_opties)        
+        
+#Code voor lineplot met 2 landen
+        lineplot2 = px.line(Totaal_per_land, x = "YEAR", y = [land_variabele, land_variabele2], 
+                          title = "Totaal ATM's per Jaar in '" + land_variabele + "'")
+        lineplot2.update_xaxes(title = "Tijd (Jaren)")
+        lineplot2.update_yaxes(title = "Aantal ATM's")
+        lineplot2.update_layout(legend_title_text = "Land")
+        st.plotly_chart(lineplot2)
 
 
 # In[15]:
@@ -302,7 +326,7 @@ with tab3:
 with tab4:
     
     st.header("Voorspelling van het aantal ATM's")
-    st.write("In dit tabblad wordt er laten zien wat het verwachte aantal ATM's gaat zijn in de komende jaren.")
+    st.write("In dit tabblad wordt er laten zien wat het verwachte aantal ATM's gaat zijn in de komende jaren. U kunt hieronder een land kiezen waarvan u de data wilt zien. Na het aangeven welk land u wilt zien, krijgt u de plot met 3 mogelijke scenario's te zien.")
     
 #Dropdown menu voor de verschillende landen
     land_variabele = st.selectbox("Kies hier een land waarvoor u de data wilt bekijken: ", land_opties)
@@ -320,15 +344,24 @@ with tab4:
     st.plotly_chart(fig)
 
 
-# In[26]:
+# In[20]:
 
 
 #Code voor het vijfde tabblad
 with tab5:
     
     st.header("Conclusie")
-    st.write("Al met al heeft u in dit dashboard kunnen zien wat het aantal ATM's per land en per airport was over de afgelopen jaren. Daarnaast heeft u kunnen zien dat het aantal ATM's de komende jaren kan gaan groeien in 3 verschillende scenario's. Dit brengt echter consequenties mee zich mee, want meer ATM's betekend ook dat er meer CO2 uitstoot zal zijn en accepteren de overheden dat. Maar ook het geluidsoverlast speelt een grote rol als het gaat om groeien in het aantal ATM's. Bijvoorbeeld in Nederland, Schiphol mag waarschijnlijk weer gaan groeien vanwege zuinigere vliegtuigen. Echter wordt de geluidsnorm strenger waardoor het aantal vluchten misschien toch niet mag groeien.")
-    st.markdown("Bron: https://www.volkskrant.nl/wetenschap/dankzij-schonere-vliegtuigen-mag-schiphol-straks-toch-weer-groeien-hoe-staat-het-ervoor-met-die-toestellen~b18b8c35/?referrer=https%3A%2F%2Fwww.google.com%2F")
+    st.write("Al met al heeft u in dit dashboard kunnen zien wat het aantal ATM's per land en per airport was over de afgelopen jaren. Daarnaast heeft u kunnen zien dat het aantal ATM's de komende jaren kan gaan groeien in 3 verschillende scenario's. Dit brengt echter consequenties mee zich mee, want meer ATM's betekend ook dat er meer CO2 uitstoot zal zijn en accepteren de overheden dat. Maar ook het geluidsoverlast speelt een grote rol als het gaat om groeien in het aantal ATM's. Bijvoorbeeld in Nederland, Schiphol mag waarschijnlijk weer gaan groeien vanwege zuinigere vliegtuigen. Echter wordt de geluidsnorm strenger waardoor het aantal vluchten misschien toch niet mag groeien. (Volkskrant) Ook EASA zegt dat er 3 verschillende scenario's zijn met betrekking tot de uitstoot van de luchtvaart. (EASA)")
+    st.markdown("##")
+    st.subheader("Verder Onderzoek")
+    st.write("Na het onderzoek wat ik heb gedaan en ik erachter ben gekomen dat er 3 verschillende scenario's zijn en dat het aantal ATM's gevolgen heeft voor de toekomst, benoemd door EASA. Daarnaast heb ik nog verdere ideeën die uitgevoerd kunnen worden (Deze kon ik helaas niet uitvoeren vanwege tijd die er voor de opdracht was): ")
+    st.markdown("- De toename van het aantal precieze ATM's per land (rekeninghoudend met onder andere: GDP, CO2, geluidsoverlast)")
+    st.markdown("- Wat voor invloed heeft het aantal ATM's op de klimaat verandering")
+    st.markdown("- Wat is de verhouding van soort vluchten in de toekomst en heeft dat invloed")
+    st.markdown("##")
+    st.markdown("Bronnen: ")
+    st.markdown("- https://www.volkskrant.nl/wetenschap/dankzij-schonere-vliegtuigen-mag-schiphol-straks-toch-weer-groeien-hoe-staat-het-ervoor-met-die-toestellen~b18b8c35/?referrer=https%3A%2F%2Fwww.google.com%2F")
+    st.markdown("- https://www.easa.europa.eu/eco/eaer/topics/overview-aviation-sector/emissions#emissions-grew-steadily-between-2013-and-2019-and-may")
 
 
 # In[14]:
