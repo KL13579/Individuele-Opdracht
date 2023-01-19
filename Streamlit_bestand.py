@@ -272,7 +272,7 @@ with tab2:
                               title = "Totaal ATM's per Jaar op '" + airport_variabele + "'")
             lineplot2.update_xaxes(title = "Tijd (Jaren)")
             lineplot2.update_yaxes(title = "Aantal ATM's")
-            lineplot2.add_trace(Totaal_per_airport, x = "YEAR", y = airport_variabele2)
+            lineplot2.add_trace(Totaal_per_airport, y = airport_variabele2)
             st.plotly_chart(lineplot2)
 
 
