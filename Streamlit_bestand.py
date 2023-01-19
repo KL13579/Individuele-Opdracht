@@ -228,7 +228,7 @@ with tab1:
     st.plotly_chart(algemeen)
 
 
-# In[25]:
+# In[31]:
 
 
 #Code voor het derde tabblad
@@ -268,12 +268,10 @@ with tab2:
             airport_variabele2 = st.selectbox("Kies hier een tweede variabele voor de plot: ", airport_opties)
     
 #Code voor lineplot met 2 airports
-            fig = go.Figure()
-            fig.add_trace(go.Scatter(x = Totaal_per_airport["YEAR"], y = airport_variabele, mode = "lines"))
-            fig.update_title(title = "Totaal ATM's per Jaar op '" + airport_variabele + "'")
-            fig.update_xaxes(title = "Tijd (Jaren)")
-            fig.update_yaxes(title = "Aantal ATM's")
-            fig.add_trace(go.Scatter(x = Totaal_per_airport["YEAR"], y = airport_variabele2, mode = "lines"))
+            lineplot2 = px.line(Totaal_per_airport, x = "YEAR", y = [airport_variabele, airport_variabele2], 
+                              title = "Totaal ATM's per Jaar op '" + airport_variabele + "'")
+            lineplot2.update_xaxes(title = "Tijd (Jaren)")
+            lineplot2.update_yaxes(title = "Aantal ATM's")
             st.plotly_chart(lineplot2)
 
 
@@ -322,14 +320,15 @@ with tab4:
     st.plotly_chart(fig)
 
 
-# In[13]:
+# In[26]:
 
 
 #Code voor het vijfde tabblad
 with tab5:
     
     st.header("Conclusie")
-    st.write("Al met al heeft u in dit dashboard kunnen zien wat het aantal ATM's per land en per airport was over de afgelopen jaren. Daarnaast heeft u kunnen zien dat het aantal ATM's de komende jaren kan gaan groeien in 3 verschillende scenario's. Dit brengt echter consequenties mee zich mee, want meer ATM's betekend ook dat er meer CO2 uitstoot zal zijn en accepteren de overheden dat. Maar ook het geluidsoverlast speelt een grote rol als het gaat om groeien in het aantal ATM's.")
+    st.write("Al met al heeft u in dit dashboard kunnen zien wat het aantal ATM's per land en per airport was over de afgelopen jaren. Daarnaast heeft u kunnen zien dat het aantal ATM's de komende jaren kan gaan groeien in 3 verschillende scenario's. Dit brengt echter consequenties mee zich mee, want meer ATM's betekend ook dat er meer CO2 uitstoot zal zijn en accepteren de overheden dat. Maar ook het geluidsoverlast speelt een grote rol als het gaat om groeien in het aantal ATM's. Bijvoorbeeld in Nederland, Schiphol mag waarschijnlijk weer gaan groeien vanwege zuinigere vliegtuigen. Echter wordt de geluidsnorm strenger waardoor het aantal vluchten misschien toch niet mag groeien.")
+    st.markdown("Bron: https://www.volkskrant.nl/wetenschap/dankzij-schonere-vliegtuigen-mag-schiphol-straks-toch-weer-groeien-hoe-staat-het-ervoor-met-die-toestellen~b18b8c35/?referrer=https%3A%2F%2Fwww.google.com%2F")
 
 
 # In[14]:
