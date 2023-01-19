@@ -265,7 +265,7 @@ with tab2:
         
         else:
 #Dropdown menu voor de tweede variabele van de airports
-            vergelijken_airport = st.selectbox("Kies hier een tweede variabele voor de plot: ", opties_airport)
+            airport_variabele2 = st.selectbox("Kies hier een tweede variabele voor de plot: ", airport_opties)
     
 #Code voor lineplot met 2 airports
             lineplot2 = px.line(Totaal_per_airport, x = "YEAR", y = airport_variabele, 
