@@ -225,7 +225,7 @@ with hoofdtab:
 with tab1:
     
     st.header("Het aantal ATM's (Wereldwijd)")
-    st.write("In dit tabblad wordt er laten zien wa het aantal ATM's is wereldwijd over de afgelopen jaren. En waarom er een eventuele daling/stijging in zat.")
+    st.write("In dit tabblad wordt er laten zien wa het aantal ATM's is wereldwijd over de afgelopen jaren. En waarom er een eventuele daling/stijging in zat. Er waren in 2020 door Covid meer dan 2 miljard minder passagiers, 50% minder vluchten en draaiden de alle luchtvaartmaatschappijen bij elkaar een verlies van maar liefst € 372 miljard.")
     
 #Code voor de lineplot
     algemeen = px.line(Totaal_ATM, x = "YEAR", y = Totaal_ATM.columns, title = "Totaal ATM's per Jaar")
@@ -233,6 +233,7 @@ with tab1:
     algemeen.update_yaxes(title = "Aantal ATM's")
     algemeen.update_layout(legend_title_text = "Variabele")
     st.plotly_chart(algemeen)
+    st.markdown("https://www.icao.int/sustainability/Pages/Economic-Impacts-of-COVID-19.aspx")
 
 
 # In[10]:
