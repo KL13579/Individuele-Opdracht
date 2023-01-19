@@ -233,7 +233,7 @@ with tab1:
     algemeen.update_yaxes(title = "Aantal ATM's")
     algemeen.update_layout(legend_title_text = "Variabele")
     st.plotly_chart(algemeen)
-    st.markdown("https://www.icao.int/sustainability/Pages/Economic-Impacts-of-COVID-19.aspx")
+    st.markdown("Bron: https://www.icao.int/sustainability/Pages/Economic-Impacts-of-COVID-19.aspx")
 
 
 # In[10]:
