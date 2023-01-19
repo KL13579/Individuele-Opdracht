@@ -228,7 +228,7 @@ with tab1:
     st.plotly_chart(algemeen)
 
 
-# In[24]:
+# In[25]:
 
 
 #Code voor het derde tabblad
@@ -269,11 +269,11 @@ with tab2:
     
 #Code voor lineplot met 2 airports
             fig = go.Figure()
-            fig.add_trace(go.Scatter(Totaal_per_airport, x = "YEAR", y = airport_variabele, mode = "lines"))
+            fig.add_trace(go.Scatter(x = Totaal_per_airport["YEAR"], y = airport_variabele, mode = "lines"))
             fig.update_title(title = "Totaal ATM's per Jaar op '" + airport_variabele + "'")
             fig.update_xaxes(title = "Tijd (Jaren)")
             fig.update_yaxes(title = "Aantal ATM's")
-            fig.add_trace(go.Scatter(Totaal_per_airport, x = "YEAR", y = airport_variabele2, mode = "lines"))
+            fig.add_trace(go.Scatter(x = Totaal_per_airport["YEAR"], y = airport_variabele2, mode = "lines"))
             st.plotly_chart(lineplot2)
 
 
