@@ -33,6 +33,7 @@ Totaal_per_continent = pd.read_csv("Totaal_per_continent.csv")
 Voorspelling_best = pd.read_csv("Voorspelling_hoog.csv")
 Voorspelling_average = pd.read_csv("Voorspelling_basis.csv")
 Voorspelling_worst = pd.read_csv("Voorspelling_laag.csv")
+df_CO2 = pd.read_csv("CO2_2.csv")
 
 
 # In[3]:
@@ -199,7 +200,7 @@ hoofdtab, tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Hoofdpagina", "Algemeen
                                       "Overzicht per Land", "Voorspelling aantal Bewegingen", "Conclusie", "Gedane Aannames"])
 
 
-# In[21]:
+# In[8]:
 
 
 #Code voor de Hoofdpagina
@@ -225,7 +226,7 @@ with hoofdtab:
 with tab1:
     
     st.header("Het aantal ATM's (Wereldwijd)")
-    st.write("In dit tabblad wordt er laten zien wa het aantal ATM's is wereldwijd over de afgelopen jaren. En waarom er een eventuele daling/stijging in zat. Er waren in 2020 door Covid meer dan 2 miljard minder passagiers, 50% minder vluchten en draaiden de alle luchtvaartmaatschappijen bij elkaar een verlies van maar liefst € 372 miljard.")
+    st.write("In dit tabblad wordt er laten zien wa het aantal ATM's is wereldwijd over de afgelopen jaren. En waarom er een eventuele daling/stijging in zat.")
     
 #Code voor de lineplot
     algemeen = px.line(Totaal_ATM, x = "YEAR", y = Totaal_ATM.columns, title = "Totaal ATM's per Jaar")
@@ -233,6 +234,7 @@ with tab1:
     algemeen.update_yaxes(title = "Aantal ATM's")
     algemeen.update_layout(legend_title_text = "Variabele")
     st.plotly_chart(algemeen)
+    
     st.markdown("Bron: https://www.icao.int/sustainability/Pages/Economic-Impacts-of-COVID-19.aspx")
 
 
@@ -284,7 +286,7 @@ with tab2:
             st.plotly_chart(lineplot2)
 
 
-# In[11]:
+# In[13]:
 
 
 #Code voor het tweede tabblad
@@ -319,8 +321,15 @@ with tab3:
         lineplot2.update_layout(legend_title_text = "Land")
         st.plotly_chart(lineplot2)
 
+#Code voor lineplot over het aantal CO2
+    lineplot3 = px.line(df_CO2, x = "Jaar", y = land_variabele, 
+                          title = "Totaal ATM's per Jaar in '" + land_variabele + "'")
+    lineplot3.update_xaxes(title = "Tijd (Jaren)")
+    lineplot3.update_yaxes(title = "CO2 in tonnen")
+    st.plotly_chart(lineplot3)
 
-# In[15]:
+
+# In[17]:
 
 
 #Code voor het vierde tabblad
@@ -345,7 +354,7 @@ with tab4:
     st.plotly_chart(fig)
 
 
-# In[20]:
+# In[15]:
 
 
 #Code voor het vijfde tabblad
@@ -365,7 +374,7 @@ with tab5:
     st.markdown("- https://www.easa.europa.eu/eco/eaer/topics/overview-aviation-sector/emissions#emissions-grew-steadily-between-2013-and-2019-and-may")
 
 
-# In[14]:
+# In[16]:
 
 
 #Code voor het zesde tabblad
