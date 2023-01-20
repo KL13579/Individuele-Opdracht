@@ -200,7 +200,7 @@ hoofdtab, tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Hoofdpagina", "Algemeen
                                       "Overzicht per Land", "Voorspelling aantal Bewegingen", "Conclusie", "Gedane Aannames"])
 
 
-# In[8]:
+# In[19]:
 
 
 #Code voor de Hoofdpagina
@@ -217,6 +217,7 @@ with hoofdtab:
     st.markdown("Bronnen:")
     st.markdown("- https://ansperformance.eu/reference/dataset/airport-traffic/")
     st.markdown("- https://www.eurocontrol.int/publication/eurocontrol-forecast-update-2022-2028")
+    st.markdown("- https://ansperformance.eu/reference/dataset/emissions/")
 
 
 # In[9]:
@@ -286,7 +287,7 @@ with tab2:
             st.plotly_chart(lineplot2)
 
 
-# In[13]:
+# In[20]:
 
 
 #Code voor het tweede tabblad
@@ -308,6 +309,12 @@ with tab3:
         lineplot.update_xaxes(title = "Tijd (Jaren)")
         lineplot.update_yaxes(title = "Aantal ATM's")
         st.plotly_chart(lineplot)
+        
+        lineplot3 = px.line(df_CO2, x = "Jaar", y = land_variabele, 
+                          title = "Totaal ATM's per Jaar in '" + land_variabele + "'")
+        lineplot3.update_xaxes(title = "Tijd (Jaren)")
+        lineplot3.update_yaxes(title = "CO2 in tonnen")
+        st.plotly_chart(lineplot3)
     
     else:
 #Dropdown menu voor de variabele van de grafiek
@@ -322,11 +329,13 @@ with tab3:
         st.plotly_chart(lineplot2)
 
 #Code voor lineplot over het aantal CO2
-    lineplot3 = px.line(df_CO2, x = "Jaar", y = land_variabele, 
-                          title = "Totaal ATM's per Jaar in '" + land_variabele + "'")
-    lineplot3.update_xaxes(title = "Tijd (Jaren)")
-    lineplot3.update_yaxes(title = "CO2 in tonnen")
-    st.plotly_chart(lineplot3)
+        lineplot4 = px.line(df_CO2, x = "Jaar", y = [land_variabele, land_variabele2], 
+                              title = "Aantal ton CO2 uitstoot per Jaar in '" + land_variabele + "'")
+        lineplot4.update_xaxes(title = "Tijd (Jaren)")
+        lineplot4.update_yaxes(title = "CO2 in tonnen")
+        st.plotly_chart(lineplot4)
+    
+    st.markdown("- https://ansperformance.eu/reference/dataset/emissions/")
 
 
 # In[17]:
