@@ -335,7 +335,7 @@ with tab3:
         lineplot4.update_yaxes(title = "CO2 in tonnen")
         st.plotly_chart(lineplot4)
     
-    st.markdown("- https://ansperformance.eu/reference/dataset/emissions/")
+    st.markdown("Bron: https://ansperformance.eu/reference/dataset/emissions/")
 
 
 # In[17]:
