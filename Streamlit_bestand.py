@@ -287,14 +287,14 @@ with tab2:
             st.plotly_chart(lineplot2)
 
 
-# In[20]:
+# In[21]:
 
 
 #Code voor het tweede tabblad
 with tab3:
     
-    st.header("Het aantal ATM's per Land")
-    st.write("In dit tabblad wordt er laten zien wat het aantal ATM's per land is over de afgelopen jaren. U kunt zelf een land uitkiezen door middel van het dropdown menu. Ook kunt u ervoor kiezen om 2 landen met elkaar te vergelijken, daarvoor moet u de tweede checkbox aanvinken en het land waarmee u wilt vergelijken selecteren via het tweede dropdown menu.")
+    st.header("Het aantal ATM's per Land + CO2 uitstoot")
+    st.write("In dit tabblad wordt er laten zien wat het aantal ATM's per land is over de afgelopen jaren. U kunt zelf een land uitkiezen door middel van het dropdown menu. Ook kunt u ervoor kiezen om 2 landen met elkaar te vergelijken, daarvoor moet u de tweede checkbox aanvinken en het land waarmee u wilt vergelijken selecteren via het tweede dropdown menu. Ook staat op dit tabblad een overzicht van het hoeveelheid ton uitgestote CO2 per land, deze zijn ook te vergelijken.")
 
 #Dropdown menu voor de variabele van de grafiek
     land_variabele = st.selectbox("Kies hier een variabele voor de grafiek: ", land_opties)
